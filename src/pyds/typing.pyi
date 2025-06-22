@@ -1,6 +1,7 @@
 # ruff: noqa: N801
+# ruff: noqa: UP045 - This check is for Python >= 3.10
 
-from typing import Generic, TypeVar
+from typing import Generic, Optional, TypeVar
 
 _T = TypeVar("_T")
 _TL = TypeVar("_TL")
@@ -12,7 +13,7 @@ class capsule(Generic[_T]):
 
 class GList(Generic[_TL]):
     data: capsule[_TL]
-    next: GList[_TL]
-    prev: GList[_TL]
+    next: Optional[GList[_TL]]
+    prev: Optional[GList[_TL]]
 
     def __init__(self, data: _TL) -> None: ...

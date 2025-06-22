@@ -20,6 +20,8 @@ import numpy
 from gi.repository import GLib, Gst
 from numpy.typing import NDArray
 
+from pyds.typing import GList, capsule
+
 __all__ = [
     "BOTH_HEAD",
     "END_HEAD",
@@ -321,8 +323,6 @@ __all__ = [
     "user_copyfunc",
     "user_releasefunc",
 ]
-
-from pyds.typing import GList, capsule
 
 class CustomDataStruct:
     """Holds custom struct data.

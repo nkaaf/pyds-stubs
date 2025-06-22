@@ -1,6 +1,6 @@
 # ruff: noqa: F403
 
-from stub import *
+from pyds.stub import *
 
 from . import stub
 

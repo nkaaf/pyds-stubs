@@ -1,11 +1,6 @@
 name: publish.yml
 on:
   workflow_dispatch:
-    inputs:
-      tag:
-        description: "Target Git Tag or branch to checkout and publish"
-        required: true
-        type: string
 
 jobs:
   publish:
@@ -13,8 +8,6 @@ jobs:
     environment: deployment
     steps:
       - uses: actions/checkout@v4.2.2
-        with:
-          ref: ${{ github.event.inputs.tag }}
 
       - uses: actions/setup-python@v5.6.0
         with:

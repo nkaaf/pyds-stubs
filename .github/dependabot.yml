@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/requirements/library"
+    schedule:
+      interval: "daily"
+    versioning-strategy: increase-if-necessary
+  - package-ecosystem: "pip"
+    directory: "/requirements/dev"
+    schedule:
+      interval: "daily"
+    versioning-strategy: increase
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"

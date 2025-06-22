@@ -1,0 +1,9 @@
+# Development
+.idea
+
+# Build
+dist
+
+# Python
+__pycache__
+.venv

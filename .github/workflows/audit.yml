@@ -1,0 +1,52 @@
+name: audit.yml
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: "3.8"
+          check-latest: "true"
+          cache: "pip"
+
+      - name: Dependency Installation
+        run: python3 -m pip install .
+
+      - uses: astral-sh/ruff-action@v3.4.0
+        with:
+          version-file: "requirements/dev/requirements.txt"
+          src: "./src"
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: "3.8"
+          check-latest: "true"
+          cache: "pip"
+
+      - uses: pypa/gh-action-pip-audit@v1.1.0
+        with:
+          inputs: "requirements/library/requirements.txt"
+  audit-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: "3.13"
+          check-latest: "true"
+          cache: "pip"
+
+      - uses: pypa/gh-action-pip-audit@v1.1.0
+        with:
+          inputs: "requirements/dev/requirements.txt"

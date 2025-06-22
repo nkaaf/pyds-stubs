@@ -11,6 +11,7 @@
 # ruff: noqa: ANN205
 # ruff: noqa: ANN401
 # ruff: noqa: ERA001
+# ruff: noqa: UP045 - This check is for Python >= 3.10
 
 """pybind11 bindings for gstnvdsmeta."""
 
@@ -1379,10 +1380,10 @@ class NvDsBatchMeta:
     """
 
     base_meta: NvDsBaseMeta
-    batch_user_meta_list: GList[NvDsUserMeta]
+    batch_user_meta_list: typing.Optional[GList[NvDsUserMeta]]
     classifier_meta_pool: NvDsMetaPool
     display_meta_pool: NvDsMetaPool
-    frame_meta_list: GList[NvDsFrameMeta]
+    frame_meta_list: typing.Optional[GList[NvDsFrameMeta]]
     frame_meta_pool: NvDsMetaPool
     label_info_meta_pool: NvDsMetaPool
     max_frames_in_batch: int
@@ -1424,7 +1425,7 @@ class NvDsClassifierMeta:
     """
 
     base_meta: NvDsBaseMeta
-    label_info_list: GList[NvDsLabelInfo]
+    label_info_list: typing.Optional[GList[NvDsLabelInfo]]
     num_labels: int
     unique_component_id: int
 
@@ -1916,7 +1917,7 @@ class NvDsFaceObjectWithExt:
     gender: str
     glasses: str
     hair: str
-    mask: GList[typing.Any]
+    mask: typing.Optional[GList[typing.Any]]
     name: str
 
     def __init__(self) -> None: ...
@@ -1994,13 +1995,13 @@ class NvDsFrameMeta:
     base_meta: NvDsBaseMeta
     batch_id: int
     buf_pts: int
-    display_meta_list: GList[NvDsDisplayMeta]
+    display_meta_list: typing.Optional[GList[NvDsDisplayMeta]]
     frame_num: int
-    frame_user_meta_list: GList[NvDsUserMeta]
+    frame_user_meta_list: typing.Optional[GList[NvDsUserMeta]]
     ntp_timestamp: int
     num_obj_meta: int
     num_surfaces_per_frame: int
-    obj_meta_list: GList[NvDsObjectMeta]
+    obj_meta_list: typing.Optional[GList[NvDsObjectMeta]]
     pad_index: int
     source_frame_height: int
     source_frame_width: int
@@ -2514,7 +2515,7 @@ class NvDsMeta:
         data).
         """
 
-NvDsMetaList: typing.TypeAlias = GList[NvDsMeta]
+NvDsMetaList: typing.TypeAlias = typing.Optional[GList[NvDsMeta]]
 
 class NvDsMetaPool:
     """Holds information about given metadata pool.
@@ -2802,12 +2803,12 @@ class NvDsObjectMeta:
 
     base_meta: NvDsBaseMeta
     class_id: int
-    classifier_meta_list: GList[NvDsClassifierMeta]
+    classifier_meta_list: typing.Optional[GList[NvDsClassifierMeta]]
     confidence: float
     detector_bbox_info: NvDsComp_BboxInfo
     mask_params: NvOSD_MaskParams
     obj_label: str
-    obj_user_meta_list: GList[NvDsUserMeta]
+    obj_user_meta_list: typing.Optional[GList[NvDsUserMeta]]
     object_id: int
     parent: NvDsObjectMeta
     rect_params: NvOSD_RectParams
@@ -3370,7 +3371,7 @@ class NvDsPersonObjectExt:
     cap: str
     gender: str
     hair: str
-    mask: GList[typing.Any]
+    mask: typing.Optional[GList[typing.Any]]
 
     def __init__(self) -> None: ...
     @typing.overload
@@ -3549,7 +3550,7 @@ class NvDsVehicleObjectExt:
     color: str
     license: str
     make: str
-    mask: GList[typing.Any]
+    mask: typing.Optional[GList[typing.Any]]
     model: str
     region: str
     type: str
@@ -4835,7 +4836,7 @@ def nvds_clear_batch_user_meta_list(
     cleared
     """
 
-NvDisplayMetaList: typing.TypeAlias = GList[NvDsDisplayMeta]
+NvDisplayMetaList: typing.TypeAlias = typing.Optional[GList[NvDsDisplayMeta]]
 
 def nvds_clear_display_meta_list(
     frame_meta: NvDsFrameMeta, meta_list: NvDisplayMetaList
@@ -4848,7 +4849,7 @@ def nvds_clear_display_meta_list(
     cleared
     """
 
-NvDsFrameMetaList: typing.TypeAlias = GList[NvDsFrameMeta]
+NvDsFrameMetaList: typing.TypeAlias = typing.Optional[GList[NvDsFrameMeta]]
 
 def nvds_clear_frame_meta_list(
     batch_meta: NvDsBatchMeta, meta_list: NvDsFrameMetaList
@@ -4861,7 +4862,7 @@ def nvds_clear_frame_meta_list(
     cleared
     """
 
-NvDsUserMetaList: typing.TypeAlias = GList[NvDsUserMeta]
+NvDsUserMetaList: typing.TypeAlias = typing.Optional[GList[NvDsUserMeta]]
 
 def nvds_clear_frame_user_meta_list(
     frame_meta: NvDsFrameMeta, meta_list: NvDsUserMetaList
@@ -4886,7 +4887,7 @@ def nvds_clear_meta_list(
     :returns: An object of updated meta list
     """
 
-NvDsObjectMetaList: typing.TypeAlias = GList[NvDsObjectMeta]
+NvDsObjectMetaList: typing.TypeAlias = typing.Optional[GList[NvDsObjectMeta]]
 
 def nvds_clear_obj_meta_list(
     frame_meta: NvDsFrameMeta, meta_list: NvDsObjectMetaList

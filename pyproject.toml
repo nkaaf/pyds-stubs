@@ -5,7 +5,7 @@ authors = [
 ]
 description = "Typing stubs for NVIDIA DeepStream Python Bindings"
 readme = "README.md"
-requires-python = ">=3.8" # TODO: ==3.8
+requires-python = "==3.8"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",

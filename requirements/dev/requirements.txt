@@ -1,4 +1,4 @@
-build==1.2.2
+build==1.3.0
 hatch-requirements-txt==0.4.1
 hatchling==1.27.0
 ruff==0.12.7

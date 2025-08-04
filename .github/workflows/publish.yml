@@ -1,13 +1,23 @@
 name: publish.yml
+
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to publish'
+        required: true
+        default: 'production'
+        type: string
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     environment: deployment
     steps:
-      - uses: actions/checkout@v4.2.2
+      - name: Checkout selected branch
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
       - uses: actions/setup-python@v5.6.0
         with:

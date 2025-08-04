@@ -1,8 +1,5 @@
 # Typing stubs for NVIDIA DeepStream Python Bindings
 
-[![audit.yml](https://github.com/nkaaf/pyds-stubs/actions/workflows/audit.yml/badge.svg)](https://github.com/nkaaf/pyds-stubs/actions/workflows/audit.yml)
-[![license](https://badgen.net/pypi/license/pyds-stubs/)](https://pypi.org/project/pyds-stubs)
-
 This project provides type stubs for [pyds](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps)
 to improve the support of these important bindings in IDEs.
 
@@ -25,7 +22,6 @@ Python.
     * [Installation of Prerequisites](#installation-of-prerequisites)
     * [Build wheel](#build-wheel)
     * [Generation](#generation)
-    * [Post-Processing](#post-processing)
 * [License](#license)
 * [Appendix](#appendix)
     * [Python venv](#python-venv)
@@ -89,103 +85,6 @@ is installed.
 ```bash
 pybind11-stubgen pyds
 ```
-
-### Post-Processing
-
-For correct usage, the generated stubs are post-processed. Following steps are applied:
-
-* Format with ruff
-* add generic class for `capsule` with information about the class of the object.
-* remove class `GList` and add generic `GList` class with information about the class of the data.
-* `cast` functions with `capsule` datatype: `capsule` is replaced by `capsule[class]` where `class`
-  is the target class.
-* `array` datatype: Replace with numpy.ndarray
-* `numpy.ndarray[float32]`: Replace with `NDArray[numpy.float32]` with
-  `from numpy.typing import NDArray`
-* Datatype of `eglImage` of `NvBufSurfaceMappedAddr`: `typing.Any` instead of `capsule`
-* Datatype of `dataPtr` of `NvBufSurfaceParams`: `typing.Any` instead of `capsule`
-* Datatype of `batch_meta` of `NvDsBaseMeta`: `NvDsBatchMeta` instead of `_NvDsBatchMeta`
-* Datatype of `uContext` of `NvDsBaseMeta`: `typing.Any` instead of `capsule`
-* Datatype of `batch_user_meta_list` of `NvDsBatchMeta`: `typing.Optional[GList[NvDsUserMeta]]` instead of `GList`
-* Datatype of `frame_meta_list` of `NvDsBatchMeta`: `typing.Optional[GList[NvDsFrameMeta]]` instead of `GList`
-* Datatype of `meta_mutex` of `NvDsBatchMeta`: `GLib.RecMutex` instead of `_GRecMutex` with `from gi.repository import GLib`
-* Datatype of `label_info_list` of `NvDsClassifierMeta`: `typing.Optional[GList[NvDsLabelInfo]]` instead of `GList`
-* Datatype of `extMsg` of `NvDsEventMsgMeta`: `typing.Any` instead of `capsule`
-* Datatype of `mask` of `NvDsFaceObjectWithExt`: `typing.Optional[GList[typing.Any]]` instead of `GList`
-* Datatype of `display_meta_list` of `NvDsFrameMeta`: `typing.Optional[GList[NvDsDisplayMeta]]` instead of `GList`
-* Datatype of `frame_user_meta_list` of `NvDsFrameMeta`: `typing.Optional[GList[NvDsUserMeta]]` instead of `GList`
-* Datatype of `obj_meta_list` of `NvDsFrameMeta`: `typing.Optional[GList[NvDsObjectMeta]]` instead of `GList`
-* Datatype of `buffer` of `NvDsInferLayerInfo`: `typing.Any` instead of `capsule`
-* Returntype of `priv_data` property of `NvDsInferSegmentationMeta`: `typing.Any` instead of `capsule`
-* Returntype of `out_buf_ptrs_dev` property of `NvDsInferTensorMeta`: `typing.Any` instead of `capsule`
-* Returntype of `out_buf_ptrs_host` property of `NvDsInferTensorMeta`: `typing.Any` instead of `capsule`
-* Returntype of `priv_data` property of `NvDsInferTensorMeta`: `typing.Any` instead of `capsule`
-* Datatype of `meta` of `NvDsMeta`: `Gst.Meta` instead of `_GstMeta` with `from gi.repository import Gst`
-* Datatype of `meta_data` of `NvDsMeta`: `typing.Any` instead of `capsule`
-* Datatype of `user_data` of `NvDsMeta`: `typing.Any` instead of `capsule`
-* Add `NvDsMetaList` as an alias of `typing.Optional[GList[NvDsMeta]]`
-* Datatype of `empty_list` of `NvDsMetaPool`: `NvDsMetaList` instead of `GList`
-* Datatype of `full_list` of `NvDsMetaPool`: `NvDsMetaList` instead of `GList`
-* Datatype of `classifier_meta_list` of `NvDsObjectMeta`: `typing.Optional[GList[NvDsClassifierMeta]]` instead of `GList`
-* Datatype of `obj_user_meta_list` of `NvDsObjectMeta`: `typing.Optional[GList[NvDsUserMeta]]` instead of `GList`
-* Datatype of `data` of `NvDsOpticalFlowMeta`: `typing.Any` instead of `capsule`
-* Datatype of `priv` of `NvDsOpticalFlowMeta`: `typing.Any` instead of `capsule`
-* Datatype of `reserved` of `NvDsOpticalFlowMeta`: `typing.Any` instead of `capsule`
-* Datatype of `mask` of `NvDsPersonObjectExt`: `typing.Optional[GList[typing.Any]]` instead of `GList`
-* Datatype of `payload` of `NvDsPayload`: `typing.Any` instead of `capsule`
-* Datatype of `user_meta_data` of `NvDsUserMeta`: `typing.Any` instead of `capsule`
-* Datatype of `mask` of `NvDsVehicleObjectExt`: `typing.Optional[GList[typing.Any]]` instead of `GList`
-* Datatype of `text` of `RectDim`: `typing.Any` instead of `capsule`
-* Datatype of `buffer` of `NvBufSurfaceFromFd`: `capsule[NvBufSurface]` instead of `capsule`
-* Datatype of `buffer` of `free_gbuffer`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `get_detections`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `get_nvds_LayerInfo`: `typing.Any` instead of `capsule`
-* Datatype of `data` of `get_optical_flow_vectors`: `capsule[NvDsOpticalFlowMeta]` instead of `capsule`
-* Datatype of `ptr` of `get_ptr`: `typing.Any` instead of `capsule`
-* Datatype of `data` of `get_segmentation_masks`: `capsule[NvDsInferSegmentationMeta]` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_Surface_Params`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_batch_meta`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_classifier_meta`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_display_meta`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_event_msg_meta`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_frame_meta`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_label_info`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_object_meta`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_person_object`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_tensor_meta`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_user_meta`: `typing.Any` instead of `capsule`
-* Datatype of `arg0` of `glist_get_nvds_vehicle_object`: `typing.Any` instead of `capsule`
-* Datatype of `buffer` of `gst_buffer_add_nvds_meta`: `Gst.Buffer` instead of `_GstBuffer`
-* Datatype of `meta_data` of `gst_buffer_add_nvds_meta`: `typing.Any` instead of `capsule`
-* Datatype of `user_data` of `gst_buffer_add_nvds_meta`: `typing.Any` instead of `capsule`
-* Returntype of `gst_buffer_add_nvds_meta`: `NvDsMeta` instead of `_NvDsMeta`
-* Datatype of `data` of `nvds_batch_meta_copy_func`: `capsule[NvDsBatchMeta]` instead of `capsule`
-* Datatype of `user_data` of `nvds_batch_meta_copy_func`: `typing.Any` instead of `capsule`
-* Datatype of `data` of `nvds_batch_meta_release_func`: `capsule[NvDsBatchMeta]` instead of `capsule`
-* Datatype of `meta_list` of `nvds_clear_batch_user_meta_list`: `NvDsUserMetaList` instead of `GList`
-* Add `NvDisplayMetaList` as an alias of `typing.Optional[GList[NvDsDisplayMeta]]`
-* Datatype of `meta_list` of `nvds_clear_display_meta_list`: `NvDisplayMetaList` instead of `GList`
-* Add `NvDsFrameMetaList` as an alias of `typing.Optional[GList[NvDsFrameMeta]]`
-* Datatype of `meta_list` of `nvds_clear_frame_meta_list`: `NvDsFrameMetaList` instead of `GList`
-* Add `NvDsUserMetaList` as an alias of `typing.Optional[GList[NvDsUserMeta]]`
-* Datatype of `meta_list` of `nvds_clear_frame_user_meta_list`: `NvDsUserMetaList` instead of `GList`
-* Datatype of `meta_list` of `nvds_clear_meta_list`: `NvDsMetaList` instead of `GList`
-* Returntype of `nvds_clear_meta_list`: `NvDsMetaList` instead of `GList`
-* Add `NvDsObjectMetaList` as an alias of `typing.Optional[GList[NvDsObjectMeta]]`
-* Datatype of `meta_list` of `nvds_clear_obj_meta_list`: `NvDsObjectMetaList` instead of `GList`
-* Datatype of `meta_list` of `nvds_clear_obj_user_meta_list`: `NvDsObjectMetaList` instead of `GList`
-* Datatype of `src_user_meta_list` of `nvds_copy_batch_user_meta_list`: `NvDsObjectMetaList` instead of `GList`
-* Datatype of `src_user_meta_list` of `nvds_copy_display_meta_list`: `NvDisplayMetaList` instead of `GList`
-* Datatype of `src_user_meta_list` of `nvds_copy_frame_meta_list`: `NvDsFrameMetaList` instead of `GList`
-* Datatype of `src_user_meta_list` of `nvds_copy_frame_user_meta_list`: `NvDsUserMetaList` instead of `GList`
-* Datatype of `src_user_meta_list` of `nvds_copy_obj_meta_list`: `NvDsObjectMetaList` instead of `GList`
-* Datatype of `frame_meta_list` of `nvds_get_nth_frame_meta`: `GList[NvDsFrameMeta]` instead of `GList`
-* Datatype of `arg0` of `register_user_copyfunc`: `typing.Callable[[typing.Any, typing.Any], typing.Any]` instead of `typing.Callable[[capsule, capsule], capsule]`
-* Datatype of `arg0` of `register_user_releasefunc`: `typing.Callable[[typing.Any, typing.Any], None]` instead of `typing.Callable[[capsule, capsule], None]`
-* Datatype of `arg1` of `set_user_copyfunc`: `typing.Callable[[typing.Any, typing.Any], typing.Any]` instead of `typing.Callable[[capsule, capsule], capsule]`
-* Datatype of `arg1` of `set_user_releasefunc`: `typing.Callable[[typing.Any, typing.Any], None]` instead of `typing.Callable[[capsule, capsule], None]`
-* Datatype of `func` of `user_copyfunc`: `typing.Callable[[typing.Any, typing.Any], typing.Any]` instead of `typing.Callable[[capsule, capsule], capsule]`
-* Datatype of `func` of `user_releasefunc`: `typing.Callable[[typing.Any, typing.Any], None]` instead of `typing.Callable[[capsule, capsule], None]`
 
 ## License
 

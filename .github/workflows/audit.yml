@@ -33,6 +33,7 @@ jobs:
           src: "./src"
 
   audit:
+    if: ${{ github.ref_name != 'production' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -51,6 +52,7 @@ jobs:
           inputs: "requirements/library/requirements.txt"
 
   audit-dev:
+    if: ${{ github.ref_name == 'production' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

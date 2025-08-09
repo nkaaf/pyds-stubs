@@ -1,8 +1,5 @@
 # Typing stubs for NVIDIA DeepStream Python Bindings
 
-[![audit.yml](https://github.com/nkaaf/pyds-stubs/actions/workflows/audit.yml/badge.svg)](https://github.com/nkaaf/pyds-stubs/actions/workflows/audit.yml)
-[![license](https://badgen.net/pypi/license/pyds-stubs/)](https://pypi.org/project/pyds-stubs)
-
 This project provides type stubs for [pyds](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps)
 to improve the support of these important bindings in IDEs.
 

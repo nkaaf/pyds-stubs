@@ -5,7 +5,7 @@ authors = [
 ]
 description = "Typing stubs for NVIDIA DeepStream Python Bindings"
 readme = "README.md"
-requires-python = ">=3.8,<3.9"
+requires-python = ">=3.6,<3.7"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -13,7 +13,7 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.6",
     "Topic :: Documentation",
     "Typing :: Stubs Only"
 ]
@@ -54,7 +54,7 @@ sources = ["src"]
 include = ["pyds/**.pyi"]
 
 [tool.ruff]
-target-version = "py38"
+target-version = "py37" # py36 will not be supported https://github.com/astral-sh/ruff/issues/3826
 line-length = 88
 
 [tool.ruff.lint]

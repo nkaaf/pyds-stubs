@@ -1,0 +1,65 @@
+[project]
+name = "pyds-stubs"
+authors = [
+    { name = "Niklas Kaaf", email = "nkaaf@protonmail.com" },
+]
+description = "Typing stubs for NVIDIA DeepStream Python Bindings"
+readme = "README.md"
+requires-python = ">=3.6,<3.7"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.6",
+    "Topic :: Documentation",
+    "Typing :: Stubs Only"
+]
+keywords = [
+    "nvidia",
+    "deepstream",
+    "bindings",
+    "stubs"
+]
+license-files = [
+    "LICENSE"
+]
+maintainers = [
+    { name = "Niklas Kaaf", email = "nkaaf@protonmail.com" },
+]
+dynamic = ["dependencies", "version"]
+
+[project.urls]
+Repository = "https://github.com/nkaaf/pyds-stubs"
+"Bug Tracker" = "https://github.com/nkaaf/pyds-stubs/issues"
+Releases = "https://github.com/nkaaf/pyds-stubs/releases"
+
+[build-system]
+requires = ["hatchling", "hatch-requirements-txt"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata.hooks.requirements_txt]
+files = ["requirements/library/requirements.txt"]
+
+[tool.hatch.version]
+path = "VERSION"
+pattern = "^(?P<version>\\S*)$"
+
+[tool.hatch.build]
+sources = ["src"]
+
+[tool.hatch.build.targets.wheel]
+include = ["pyds/**.pyi"]
+
+[tool.ruff]
+target-version = "py37" # py36 will not be supported https://github.com/astral-sh/ruff/issues/3826
+line-length = 88
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["ICN001", "COM812"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

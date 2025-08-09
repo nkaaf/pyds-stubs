@@ -11,15 +11,6 @@ on:
 
 jobs:
   linting:
-    if: >
-      ${{
-        (github.event_name == 'pull_request' &&
-          github.head_ref != 'production' &&
-          github.event.pull_request.base.ref != 'production')
-        ||
-        (github.event_name == 'workflow_dispatch' &&
-          github.ref_name != 'production')
-      }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -42,15 +33,6 @@ jobs:
           src: "./src"
 
   audit:
-    if: >
-      ${{
-        (github.event_name == 'pull_request' &&
-          github.head_ref != 'production' &&
-          github.event.pull_request.base.ref != 'production')
-        ||
-        (github.event_name == 'workflow_dispatch' &&
-          github.ref_name != 'production')
-      }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -69,14 +51,6 @@ jobs:
           inputs: "requirements/library/requirements.txt"
 
   audit-dev:
-    if: >
-      ${{
-        (github.event_name == 'pull_request' &&
-          (github.head_ref == 'production' || github.event.pull_request.base.ref == 'production'))
-        ||
-        (github.event_name == 'workflow_dispatch' &&
-          github.ref_name == 'production')
-      }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

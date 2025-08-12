@@ -4,6 +4,10 @@ on:
   # Scheduled weekly scan (Sunday, 02:00 UTC)
   schedule:
     - cron: '0 2 * * 0'
+  push:
+    branches:
+      - production
+      - '*-stubs'
   pull_request:
     branches:
       - production

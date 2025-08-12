@@ -11,6 +11,7 @@ on:
 
 jobs:
   linting:
+    if: github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'production'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -33,6 +34,7 @@ jobs:
           src: "./src"
 
   audit:
+    if: github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'production'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -51,6 +53,7 @@ jobs:
           inputs: "requirements/library/requirements.txt"
 
   audit-dev:
+    if: github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'production'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

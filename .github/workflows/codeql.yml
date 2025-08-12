@@ -1,0 +1,44 @@
+name: "High Security CodeQL Analysis"
+
+on:
+  # Scheduled weekly scan (Sunday, 02:00 UTC)
+  schedule:
+    - cron: '0 2 * * 0'
+  pull_request:
+    branches:
+      - production
+      - '*-stubs'
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch name or commit SHA to scan'
+        required: true
+
+jobs:
+  codeql:
+    name: "CodeQL High Security Scan"
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5.0.0
+        with:
+          # Use the provided ref if manual, fallback to event ref
+          ref: ${{ github.event.inputs.ref || github.ref }}
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3.29.9
+        with:
+          config-file: .github/codeql/config.yml
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3.29.9
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3.29.9
+        with:
+          category: "/language:${{ matrix.language }}"

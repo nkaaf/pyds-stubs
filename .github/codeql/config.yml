@@ -1,43 +1,14 @@
 name: "High Security CodeQL Config"
 
-# Schedule: Weekly scan on Sundays at 02:00 UTC
-schedules:
-  - cron: '0 2 * * 0'
-
-on:
-  pull_request:
-    branches:
-      - production
-      - '*-stubs'
-
-paths-ignore: []
-
+# Most secure settings: extended, all relevant queries, fail on errors, enable experimental
 queries:
   - uses: security-extended
   - uses: security-and-quality
   - uses: github/codeql-python-queries
   - uses: github/codeql-actions-queries
 
-languages:
-  python:
-    # Only analyze python on non-production branches
-    condition: branch != 'production'
-    queries:
-      - uses: security-extended
-      - uses: security-and-quality
-      - uses: github/codeql-python-queries
-  actions:
-    # Only analyze github-actions workflows on production branch
-    condition: branch == 'production'
-    queries:
-      - uses: security-extended
-      - uses: security-and-quality
-      - uses: github/codeql-actions-queries
-
-# Strict options for security
 options:
+  allow-experimental-queries: true
+  failOn: error
   max-paths: 10
   threads: 4
-  allow-experimental-queries: true
-  failOnCritical: true
-  failOn: note

@@ -30,7 +30,7 @@ jobs:
       - name: Dependency Installation
         run: python3 -m pip install .
 
-      - uses: astral-sh/ruff-action@v3.5.0
+      - uses: astral-sh/ruff-action@0c50076f12c38c3d0115b7b519b54a91cb9cf0ad # v3.5.0
         with:
           version-file: "requirements/dev/requirements.txt"
           src: "./src"
@@ -50,7 +50,7 @@ jobs:
           check-latest: "true"
           cache: "pip"
 
-      - uses: pypa/gh-action-pip-audit@v1.1.0
+      - uses: pypa/gh-action-pip-audit@1220774d901786e6f652ae159f7b6bc8fea6d266 # v1.1.0
         with:
           inputs: "requirements/library/requirements.txt"
 
@@ -69,6 +69,6 @@ jobs:
           check-latest: "true"
           cache: "pip"
 
-      - uses: pypa/gh-action-pip-audit@v1.1.0
+      - uses: pypa/gh-action-pip-audit@1220774d901786e6f652ae159f7b6bc8fea6d266 # v1.1.0
         with:
           inputs: "requirements/dev/requirements.txt"

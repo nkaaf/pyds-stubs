@@ -37,16 +37,16 @@ jobs:
           ref: ${{ github.event.inputs.ref || github.ref }}
 
       - name: Initialize CodeQL (Python)
-        uses: github/codeql-action/init@v3.29.10
+        uses: github/codeql-action/init@v3.29.11
         with:
           config-file: .github/codeql/config.yml
           languages: python
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v3.29.10
+        uses: github/codeql-action/autobuild@v3.29.11
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3.29.10
+        uses: github/codeql-action/analyze@v3.29.11
 
   codeql-actions:
     name: "CodeQL GitHub Actions Scan"
@@ -64,13 +64,13 @@ jobs:
           ref: ${{ github.event.inputs.ref || github.ref }}
 
       - name: Initialize CodeQL (Actions)
-        uses: github/codeql-action/init@v3.29.10
+        uses: github/codeql-action/init@v3.29.11
         with:
           config-file: .github/codeql/config.yml
           languages: actions
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v3.29.10
+        uses: github/codeql-action/autobuild@v3.29.11
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3.29.10
+        uses: github/codeql-action/analyze@v3.29.11

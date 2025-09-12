@@ -19,7 +19,7 @@ jobs:
       (github.event_name == 'pull_request') && 
       (github.base_ref != 'production' && github.base_ref != '1.0.2-stubs') ||
       (github.event_name == 'workflow_dispatch') && 
-      (github.event.inputs.ref != 'production' && github.event.inputs.ref != '1.0.2-stubs') ||
+      (github.event.inputs.ref != 'production' && github.event.inputs.ref != '1.0.2-stubs')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

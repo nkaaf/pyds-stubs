@@ -16,10 +16,8 @@ jobs:
   linting:
     # No linting on '1.0.2-stubs', because ruff does not support Python < 3.7
     if: |
-      (github.event_name == 'pull_request') && 
-      (github.base_ref != 'production' && github.base_ref != '1.0.2-stubs') ||
-      (github.event_name == 'workflow_dispatch') && 
-      (github.event.inputs.ref != 'production' && github.event.inputs.ref != '1.0.2-stubs')
+      ((github.event_name == 'pull_request') && (github.base_ref != '1.0.2-stubs')) ||
+      ((github.event_name == 'workflow_dispatch') && (github.event.inputs.ref != 'production' && github.event.inputs.ref != '1.0.2-stubs'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -32,9 +30,10 @@ jobs:
           src: "./src"
 
   audit:
+    # No audit on '1.0.2-stubs', because pip-audit does not support legacy setup.py projects
     if: |
-      (github.event_name == 'pull_request' && github.base_ref != 'production') ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.ref != 'production')
+      ((github.event_name == 'pull_request') && (github.base_ref != '1.0.2-stubs')) ||
+      ((github.event_name == 'workflow_dispatch') && (github.event.inputs.ref != 'production' && github.event.inputs.ref != '1.0.2-stubs'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -47,9 +46,10 @@ jobs:
           inputs: "."
 
   audit-dev:
+    # No audit on '1.0.2-stubs', because pip-audit does not support legacy setup.py projects
     if: |
-      (github.event_name == 'pull_request' && github.base_ref != 'production') ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.ref != 'production')
+      ((github.event_name == 'pull_request') && (github.base_ref != '1.0.2-stubs')) ||
+      ((github.event_name == 'workflow_dispatch') && (github.event.inputs.ref != 'production' && github.event.inputs.ref != '1.0.2-stubs'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

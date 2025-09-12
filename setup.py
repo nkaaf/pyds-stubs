@@ -1,4 +1,5 @@
 from setuptools import setup
+from pathlib import Path
 
 setup(
     name='pyds-stubs',
@@ -6,7 +7,7 @@ setup(
     author='Niklas Kaaf',
     author_email='nkaaf@protonmail.com',
     description='Typing stubs for NVIDIA DeepStream Python Bindings',
-    long_description=open('README.md').read(),
+    long_description=Path('README.md').read_text(),
     long_description_content_type='text/markdown',
     url='https://github.com/nkaaf/pyds-stubs',
     project_urls={

@@ -34,7 +34,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: ${{ github.event.inputs.ref || github.ref }}
+          ref: ${{ github.event.inputs.ref || github.head_ref || github.ref }}
 
       - name: Initialize CodeQL (Python)
         uses: github/codeql-action/init@v3.30.3
@@ -61,7 +61,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: ${{ github.event.inputs.ref || github.ref }}
+          ref: ${{ github.event.inputs.ref || github.head_ref || github.ref }}
 
       - name: Initialize CodeQL (Actions)
         uses: github/codeql-action/init@v3.30.3

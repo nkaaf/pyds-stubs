@@ -23,7 +23,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.event.inputs.ref || github.head_ref }}
 
       - uses: astral-sh/ruff-action@57714a7c8a2e59f32539362ba31877a1957dded1 # v3.5.1
         with:
@@ -39,7 +39,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.event.inputs.ref || github.head_ref }}
 
       - uses: pypa/gh-action-pip-audit@1220774d901786e6f652ae159f7b6bc8fea6d266 # v1.1.0
         with:
@@ -55,7 +55,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.event.inputs.ref || github.head_ref }}
 
       - uses: pypa/gh-action-pip-audit@1220774d901786e6f652ae159f7b6bc8fea6d266 # v1.1.0
         with:

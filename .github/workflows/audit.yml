@@ -10,7 +10,7 @@ jobs:
     # No linting on '1.0.2-stubs', because ruff does not support Python < 3.7
     if: |
       (github.event.pull_request.base.ref != 'production') &&
-      (github.event.pull_request.base.ref != "1.0.2-stubs")
+      (github.event.pull_request.base.ref != '1.0.2-stubs')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

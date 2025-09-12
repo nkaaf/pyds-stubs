@@ -11,7 +11,7 @@ on:
     branches:
       - production
       - '*-stubs'
-  pull_request_target:
+  pull_request:
     branches:
       - production
       - '*-stubs'

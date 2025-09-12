@@ -3,7 +3,7 @@ permissions:
   contents: read
 
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - '*-stubs'
   workflow_dispatch:
@@ -13,15 +13,6 @@ on:
         required: true
 
 jobs:
-  debug:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print Debug Info
-        run: |
-          echo "Event Name: ${{ github.event_name }}"
-          echo "Ref: ${{ github.ref }}"
-          echo "Head Ref: ${{ github.head_ref }}"
-          echo "Base Ref: ${{ github.base_ref }}"
   linting:
     # No linting on '1.0.2-stubs', because ruff does not support Python < 3.7
     if: |

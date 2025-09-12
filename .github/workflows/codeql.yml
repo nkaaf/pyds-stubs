@@ -40,7 +40,7 @@ jobs:
         uses: github/codeql-action/init@v3.30.3
         with:
           languages: python
-          queries: security-and-quality,quality-extended,security-extended
+          queries: security-and-quality,security-extended
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3.30.3
@@ -67,7 +67,7 @@ jobs:
         uses: github/codeql-action/init@v3.30.3
         with:
           languages: actions
-          queries: security-and-quality,quality-extended,security-extended
+          queries: security-and-quality,security-extended
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3.30.3

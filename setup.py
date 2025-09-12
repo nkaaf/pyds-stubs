@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='pyds-stubs',
-    version='1.0.2',
+    version='1.0.2.1',
     author='Niklas Kaaf',
     author_email='nkaaf@protonmail.com',
     description='Typing stubs for NVIDIA DeepStream Python Bindings',

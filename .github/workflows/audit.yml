@@ -1,74 +1,49 @@
-name: audit.yml
+name: "Auditing"
 permissions:
   contents: read
 
 on:
   pull_request:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to audit'
-        required: true
-        type: string
 
 jobs:
   linting:
-    if: github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'production'
+    # No linting on '1.0.2-stubs', because ruff does not support Python < 3.7
+    if: |
+      (github.event.pull_request.base.ref != 'production') &&
+      (github.event.pull_request.base.ref != "1.0.2-stubs")
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: ${{ github.event.inputs.branch || github.head_ref }}
-
-      - uses: actions/setup-python@v6.0.0
-        with:
-          python-version: "3.8"
-          check-latest: "true"
-          cache: "pip"
-
-      - name: Dependency Installation
-        run: python3 -m pip install .
+          ref: ${{ github.head_ref }}
 
       - uses: astral-sh/ruff-action@57714a7c8a2e59f32539362ba31877a1957dded1 # v3.5.1
         with:
-          version-file: "requirements/dev/requirements.txt"
           src: "./src"
 
   audit:
-    if: github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'production'
+    if: github.event.pull_request.base.ref != 'production'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: ${{ github.event.inputs.branch || github.head_ref }}
-
-      - uses: actions/setup-python@v6.0.0
-        with:
-          python-version: "3.8"
-          check-latest: "true"
-          cache: "pip"
+          ref: ${{ github.head_ref }}
 
       - uses: pypa/gh-action-pip-audit@1220774d901786e6f652ae159f7b6bc8fea6d266 # v1.1.0
         with:
-          inputs: "requirements/library/requirements.txt"
+          inputs: "."
 
   audit-dev:
-    if: github.event_name != 'pull_request' || github.event.pull_request.base.ref != 'production'
+    if: github.event.pull_request.base.ref != 'production'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: ${{ github.event.inputs.branch || github.head_ref }}
-
-      - uses: actions/setup-python@v6.0.0
-        with:
-          python-version: "3.13"
-          check-latest: "true"
-          cache: "pip"
+          ref: ${{ github.head_ref }}
 
       - uses: pypa/gh-action-pip-audit@1220774d901786e6f652ae159f7b6bc8fea6d266 # v1.1.0
         with:
-          inputs: "requirements/dev/requirements.txt"
+          inputs: "."

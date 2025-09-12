@@ -1,4 +1,4 @@
-name: publish.yml
+name: "Publishing"
 permissions:
   contents: read
 
@@ -10,6 +10,11 @@ on:
         required: true
         default: 'production'
         type: string
+      test:
+        description: 'Upload to TestPyPi'
+        required: true
+        default: false
+        type: boolean
 
 jobs:
   publish:
@@ -23,20 +28,23 @@ jobs:
 
       - uses: actions/setup-python@v6.0.0
         with:
-          python-version: "3.13"
           check-latest: 'true'
-          cache: "pip"
+          cache: 'pip'
 
-      - name: Dependency installation
-        run: |
-          set -e
-          python3 -m pip install twine
-          python3 -m pip install -r requirements/dev/requirements.txt
+      - name: Publishing tool installation
+        run: python3 -m pip install twine
 
       - name: Build package
         run: python3 -m build
 
-      - name: Upload package
+      - name: Upload package to PyPi
+        if: github.event.inputs.test == false
         env:
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
         run: python3 -m twine upload dist/*
+
+      - name: Upload package to TestPyPi
+        if: github.event.inputs.test == true
+        env:
+          TWINE_PASSWORD: ${{ secrets.TESTPYPI_TOKEN }}
+        run: python3 -m twine upload --repository testpypi dist/*

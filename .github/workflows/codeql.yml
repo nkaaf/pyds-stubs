@@ -39,8 +39,8 @@ jobs:
       - name: Initialize CodeQL (Python)
         uses: github/codeql-action/init@v3.30.3
         with:
-          config-file: .github/codeql/config.yml
           languages: python
+          queries: security-and-quality,quality-extended,security-extended
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3.30.3
@@ -66,8 +66,8 @@ jobs:
       - name: Initialize CodeQL (Actions)
         uses: github/codeql-action/init@v3.30.3
         with:
-          config-file: .github/codeql/config.yml
           languages: actions
+          queries: security-and-quality,quality-extended,security-extended
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3.30.3

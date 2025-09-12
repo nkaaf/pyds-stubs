@@ -60,11 +60,17 @@ used during the development and can be omitted in runtime environments.
 * Python 3.6
   * Preferred via [pyenv](https://github.com/pyenv/pyenv)
 * Python venv (optional, recommended)
-* `setuptools`
+* `setuptools`, `pre-commit` (preferred via pipx)
 
 ```bash
 pip install setuptools
 ```
+
+```bash
+pipx install pre-commit
+pre-commit install
+```
+
 
 ### Build wheel
 

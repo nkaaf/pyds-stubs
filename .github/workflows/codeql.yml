@@ -1,67 +1,24 @@
 name: "High Security CodeQL Analysis"
-permissions:
-  actions: read
-  contents: read
-  security-events: write
 
 on:
-  schedule:
-    - cron: '0 2 * * 0'
   push:
-    branches:
-      - production
-      - '*-stubs'
   pull_request:
-    branches:
-      - production
-      - '*-stubs'
   workflow_dispatch:
-    inputs:
-      ref:
-        description: 'Branch name or commit SHA to scan'
-        required: true
 
 jobs:
-  codeql-python:
-    name: "CodeQL Python Scan"
-    if: |
-      (github.event_name == 'pull_request' && github.base_ref != 'production') ||
-      (github.event_name == 'push' && github.ref != 'refs/heads/production') ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.ref != 'production')
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5.0.0
-        with:
-          ref: ${{ github.event.inputs.ref || github.head_ref || github.ref }}
-
-      - name: Initialize CodeQL (Python)
-        uses: github/codeql-action/init@v3.30.3
-        with:
-          languages: python
-          queries: security-and-quality,security-extended
-
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3.30.3
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3.30.3
-
   codeql-actions:
     name: "CodeQL GitHub Actions Scan"
-    if: |
-      (github.event_name == 'pull_request' && github.base_ref == 'production') ||
-      (github.event_name == 'push' && github.ref == 'refs/heads/production') ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.ref == 'production') ||
-      (github.event_name == 'schedule')
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: ${{ github.event.inputs.ref || github.head_ref || github.ref }}
+          ref: "production"
 
       - name: Initialize CodeQL (Actions)
         uses: github/codeql-action/init@v3.30.3

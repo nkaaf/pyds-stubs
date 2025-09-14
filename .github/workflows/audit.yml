@@ -1,61 +1,36 @@
-name: "Auditing"
-permissions:
-  contents: read
+name: "Audit"
 
 on:
-  pull_request:
-    branches:
-      - '*-stubs'
   workflow_dispatch:
-    inputs:
-      ref:
-        description: 'Branch name or commit SHA to scan'
-        required: true
 
 jobs:
   linting:
-    # No linting on '1.0.2-stubs', because ruff does not support Python < 3.7
-    if: |
-      ((github.event_name == 'pull_request') && (github.base_ref != '1.0.2-stubs')) ||
-      ((github.event_name == 'workflow_dispatch') && (github.event.inputs.ref != 'production' && github.event.inputs.ref != '1.0.2-stubs'))
+    name: "Linting"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: ${{ github.event.inputs.ref || github.head_ref }}
+          ref: "production"
 
       - uses: astral-sh/ruff-action@57714a7c8a2e59f32539362ba31877a1957dded1 # v3.5.1
         with:
           src: "./src"
 
   audit:
-    # No audit on '1.0.2-stubs', because pip-audit does not support legacy setup.py projects
-    if: |
-      ((github.event_name == 'pull_request') && (github.base_ref != '1.0.2-stubs')) ||
-      ((github.event_name == 'workflow_dispatch') && (github.event.inputs.ref != 'production' && github.event.inputs.ref != '1.0.2-stubs'))
+    name: "Audit"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: ${{ github.event.inputs.ref || github.head_ref }}
-
-      - uses: pypa/gh-action-pip-audit@1220774d901786e6f652ae159f7b6bc8fea6d266 # v1.1.0
-        with:
-          inputs: "."
-
-  audit-dev:
-    # No audit on '1.0.2-stubs', because pip-audit does not support legacy setup.py projects
-    if: |
-      ((github.event_name == 'pull_request') && (github.base_ref != '1.0.2-stubs')) ||
-      ((github.event_name == 'workflow_dispatch') && (github.event.inputs.ref != 'production' && github.event.inputs.ref != '1.0.2-stubs'))
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5.0.0
-        with:
-          ref: ${{ github.event.inputs.ref || github.head_ref }}
+          ref: "production"
 
       - uses: pypa/gh-action-pip-audit@1220774d901786e6f652ae159f7b6bc8fea6d266 # v1.1.0
         with:

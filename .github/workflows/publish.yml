@@ -1,15 +1,8 @@
-name: "Publishing"
-permissions:
-  contents: read
+name: "Publish"
 
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'Branch to publish'
-        required: true
-        default: 'production'
-        type: string
       test:
         description: 'Upload to TestPyPi'
         required: true
@@ -18,38 +11,11 @@ on:
 
 jobs:
   publish:
+    name: "Publish"
     runs-on: ubuntu-latest
-    environment: deployment
+    permissions:
+      contents: read
+
     steps:
-      - name: Checkout selected branch
-        uses: actions/checkout@v5.0.0
-        with:
-          ref: ${{ github.event.inputs.branch }}
-
-      - uses: actions/setup-python@v6.0.0
-        with:
-          check-latest: 'true'
-          cache: 'pip'
-
-      - name: Cache .eggs directory (Python 3.6)
-        uses: actions/cache@v4.2.4
-        with:
-          path: .eggs
-
-      - name: Publishing tool installation
-        run: python3 -m pip install twine
-
-      - name: Build package
-        run: python3 -m build
-
-      - name: Upload package to PyPi
-        if: github.event.inputs.test == false
-        env:
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: python3 -m twine upload dist/*
-
-      - name: Upload package to TestPyPi
-        if: github.event.inputs.test == true
-        env:
-          TWINE_PASSWORD: ${{ secrets.TESTPYPI_TOKEN }}
-        run: python3 -m twine upload --repository testpypi dist/*
+      - name: Production cannot be published
+        run: exit 1

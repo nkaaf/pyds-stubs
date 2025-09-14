@@ -4,6 +4,10 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch name or commit SHA to scan'
+        required: true
 
 jobs:
   codeql-python:
@@ -18,7 +22,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: "1.0.2-stubs"
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref || github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref }}
 
       - name: Initialize CodeQL (Python)
         uses: github/codeql-action/init@v3.30.3
@@ -44,7 +48,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
         with:
-          ref: "1.0.2-stubs"
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref || github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref }}
 
       - name: Initialize CodeQL (Actions)
         uses: github/codeql-action/init@v3.30.3

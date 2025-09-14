@@ -32,6 +32,7 @@ jobs:
         uses: actions/cache@v4.2.4
         with:
           path: .eggs
+          key: ${{ runner.os }}-${{ hashFiles('setup.py') }}
 
       - name: Build package
         run: python setup.py sdist bdist_wheel

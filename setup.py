@@ -45,11 +45,6 @@ setup(
         'numpy',
         'PyGObject-stubs'
     ],
-    extras_require={
-        'gen': [
-            'pybind11-stubgen @ '
-            'git+https://github.com/nkaaf/sizmailov-pybind11-stubgen.git']
-    },
     license_files=['LICENSE'],
     setup_requires=['setuptools==59.6.0', 'wheel==0.37.1', 'build==0.9.0'],
 )

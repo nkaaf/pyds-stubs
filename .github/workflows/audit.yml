@@ -1,0 +1,26 @@
+name: "Audit"
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  linting:
+    name: "Linting"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Success - lining not supported
+        run: exit 0
+
+  audit:
+    name: "Audit"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Success - auditing not supported
+        run: exit 0

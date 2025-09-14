@@ -1,9 +1,14 @@
 # Development
 .idea
 
-# Build
-dist
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.eggs
 
-# Python
-__pycache__
+# Virtual environments
 .venv

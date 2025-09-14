@@ -57,6 +57,7 @@ jobs:
         uses: actions/download-artifact@v5.0.0
         with:
           name: dist
+          path: dist
 
       - name: Upload package to PyPi
         if: github.event.inputs.test == 'false'

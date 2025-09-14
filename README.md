@@ -45,7 +45,7 @@ version
 
 Please pin your version directly or limit it upper-wise like:
 
-`pyds-stubs>=1.1.0,<1.1.0`
+`pyds-stubs>=1.1.0,<1.1.1`
 
 ## Usage
 

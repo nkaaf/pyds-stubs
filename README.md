@@ -96,7 +96,7 @@ For correct usage, the generated stubs are post-processed. Following steps are a
 * remove class `GList` and add generic `GList` class with information about the class of the data.
 * `cast` functions with `capsule` datatype: `capsule` is replaced by `capsule[class]` where `class`
   is the target class.
-* `array` datatype: Replace with numpy.ndarray
+* `array` datatype: Replace with `numpy.ndarray`
 * `numpy.ndarray[float32]`: Replace with `NDArray[numpy.float32]` with
   `from numpy.typing import NDArray`
 * Returntype of `eglImage` property of `NvBufSurfaceMappedAddr`: `typing.Any` instead of `capsule`

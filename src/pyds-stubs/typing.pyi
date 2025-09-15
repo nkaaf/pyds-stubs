@@ -3,10 +3,10 @@
 
 from typing import Generic, Optional, TypeVar
 
-_T = TypeVar("_T")
-_TL = TypeVar("_TL")
+_T = TypeVar('_T')
+_TL = TypeVar('_TL')
 
-__all__ = ["GList", "capsule"]
+__all__ = ['GList', 'capsule']
 
 class capsule(Generic[_T]):
     def __init__(self, data: _T) -> None: ...

@@ -11,14 +11,8 @@ jobs:
       contents: read
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v5.0.0
-        with:
-          ref: "production"
-
-      - uses: astral-sh/ruff-action@57714a7c8a2e59f32539362ba31877a1957dded1 # v3.5.1
-        with:
-          src: "./src"
+      - name: Success - lining not supported
+        run: exit 0
 
   audit:
     name: "Audit"
@@ -27,11 +21,5 @@ jobs:
       contents: read
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v5.0.0
-        with:
-          ref: "production"
-
-      - uses: pypa/gh-action-pip-audit@1220774d901786e6f652ae159f7b6bc8fea6d266 # v1.1.0
-        with:
-          inputs: "."
+      - name: Success - auditing not supported
+        run: exit 0

@@ -73,5 +73,8 @@ quote-style = "single"
 select = ["ALL"]
 ignore = ["ICN001", "COM812"]
 
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
 [tool.ruff.lint.pydocstyle]
 convention = "google"

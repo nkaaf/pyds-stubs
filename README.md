@@ -3,6 +3,7 @@
 ![PyPI - Status](https://img.shields.io/pypi/status/pyds-stubs?style=for-the-badge)
 ![PyPI - Types](https://img.shields.io/pypi/types/pyds-stubs?style=for-the-badge)
 ![Static Badge](https://img.shields.io/badge/pyds%20Version-1.1.2-blue?style=for-the-badge)
+![Python Version from PEP 621 TOML](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2Fnkaaf%2Fpyds-stubs%2Frefs%2Ftags%2F1.1.2%2Fpyproject.toml&style=for-the-badge)
 
 This project provides type stubs for [pyds](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps)
 to improve the support of these important bindings in IDEs.

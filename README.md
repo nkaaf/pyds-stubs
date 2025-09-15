@@ -17,6 +17,12 @@ the [pyds](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps) repository. 
 the need for type hints for a simpler and more stable implementation of DeepStream pipelines in
 Python.
 
+> [!NOTE]
+> The stubs are distributed as a third-party stub-only library according to
+> [PEP 561](https://peps.python.org/pep-0561/#stub-only-packages) because this project is not
+> related to NVIDIA and if they ship stubs, this project can easily be deprecated and publicly
+> archived.
+
 ## Index
 
 * [Installation](#installation)

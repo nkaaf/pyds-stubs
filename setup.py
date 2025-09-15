@@ -27,14 +27,10 @@ setup(
     ],
     keywords=['nvidia', 'deepstream', 'bindings', 'stubs'],
     license='Apache Software License',
-    maintainers=[
-        {'name': 'Niklas Kaaf', 'email': 'nkaaf@protonmail.com'},
-    ],
-    packages=['pyds'],
+    packages=['pyds-stubs'],
     package_dir={'': 'src'},
-    package_data={'pyds': ['*.pyi']},
+    package_data={'pyds-stubs': ['*.pyi']},
     python_requires='>=3.6,<3.7',
     install_requires=['numpy', 'PyGObject-stubs'],
-    license_files=['LICENSE'],
     setup_requires=['setuptools==59.6.0', 'wheel==0.37.1', 'build==0.9.0'],
 )

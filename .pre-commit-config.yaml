@@ -36,3 +36,13 @@ repos:
     -   id: requirements-txt-fixer
     -   id: sort-simple-yaml
     -   id: trailing-whitespace
+- repo: https://github.com/astral-sh/uv-pre-commit
+  rev: 0.8.17
+  hooks:
+    - id: uv-lock
+    - id: uv-sync
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.13.0
+  hooks:
+    - id: ruff-check
+    - id: ruff-format

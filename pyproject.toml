@@ -65,6 +65,8 @@ line-length = 88
 exclude = [
     "gen"
 ]
+
+[tool.ruff.format]
 quote-style = "single"
 
 [tool.ruff.lint]

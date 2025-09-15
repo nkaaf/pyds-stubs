@@ -65,6 +65,7 @@ line-length = 88
 exclude = [
     "gen"
 ]
+quote-style = "single"
 
 [tool.ruff.lint]
 select = ["ALL"]

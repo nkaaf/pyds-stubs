@@ -1,0 +1,36 @@
+name: "High Security CodeQL Analysis"
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch name or commit SHA to scan'
+        required: true
+
+jobs:
+  codeql-actions:
+    name: "CodeQL GitHub Actions Scan"
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref || github.ref }}
+
+      - name: Initialize CodeQL (Actions)
+        uses: github/codeql-action/init@v3.30.3
+        with:
+          languages: actions
+          queries: security-and-quality,security-extended
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3.30.3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3.30.3

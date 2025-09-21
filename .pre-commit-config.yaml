@@ -1,5 +1,7 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
+ci:
+  skip: [uv-lock]
 exclude: ^gen/.*
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
@@ -36,3 +38,13 @@ repos:
     -   id: requirements-txt-fixer
     -   id: sort-simple-yaml
     -   id: trailing-whitespace
+- repo: https://github.com/astral-sh/uv-pre-commit
+  rev: 0.8.17
+  hooks:
+    - id: uv-lock
+    - id: uv-sync
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.13.0
+  hooks:
+    - id: ruff-check
+    - id: ruff-format

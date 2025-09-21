@@ -63,7 +63,7 @@ used during the development and can be omitted in runtime environments.
 
 ### Installation of Prerequisites
 
-* Python 3.8
+* Python 3.10
 * `uv` and `pre-commit` (both preferred via pipx)
 * Python venv (optional, recommended)
 

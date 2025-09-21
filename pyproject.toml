@@ -1,0 +1,80 @@
+[project]
+name = "pyds-stubs"
+version = "1.1.11"
+authors = [
+    { name = "Niklas Kaaf", email = "nkaaf@protonmail.com" }
+]
+description = "Typing stubs for NVIDIA DeepStream Python Bindings"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Documentation",
+    "Typing :: Stubs Only"
+]
+keywords = [
+    "nvidia",
+    "deepstream",
+    "bindings",
+    "stubs"
+]
+license-files = [
+    "LICENSE"
+]
+maintainers = [
+    { name = "Niklas Kaaf", email = "nkaaf@protonmail.com" },
+]
+dependencies = [
+    "numpy",
+    "PyGObject-stubs",
+]
+
+[project.urls]
+Repository = "https://github.com/nkaaf/pyds-stubs"
+"Bug Tracker" = "https://github.com/nkaaf/pyds-stubs/issues"
+Releases = "https://github.com/nkaaf/pyds-stubs/releases"
+
+[dependency-groups]
+dev = [
+    {include-group = "gen"},
+    {include-group = "lint"}
+]
+gen = [
+    "pybind11-stubgen==2.5.5"
+]
+lint = [
+    "ruff==0.13.1"
+]
+
+[build-system]
+requires = ["uv_build>=0.8.17,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+package = true
+
+[tool.ruff]
+target-version = "py38"
+line-length = 88
+exclude = [
+    "gen"
+]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["ICN001", "COM812"]
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

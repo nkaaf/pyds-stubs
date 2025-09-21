@@ -1,6 +1,6 @@
 [project]
 name = "pyds-stubs"
-version = "1.1.5"
+version = "1.1.5.1"
 authors = [
     { name = "Niklas Kaaf", email = "nkaaf@protonmail.com" }
 ]
@@ -33,7 +33,6 @@ maintainers = [
 dependencies = [
     "numpy",
     "PyGObject-stubs",
-    "uv-build>=0.8.17",
 ]
 
 [project.urls]

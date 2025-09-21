@@ -20,7 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5.0.0
         with:
-          ref: "1.1.6-stubs"
+          ref: "1.1.8-stubs"
 
       - name: Install python
         uses: actions/setup-python@v6.0.0

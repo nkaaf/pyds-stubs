@@ -17,8 +17,6 @@ jobs:
 
       - name: Run Ruff
         uses: astral-sh/ruff-action@57714a7c8a2e59f32539362ba31877a1957dded1 # v3.5.1
-        with:
-          src: 'src'
 
   audit:
     name: "Audit"
@@ -39,3 +37,5 @@ jobs:
 
       - name: Audit
         uses: pypa/gh-action-pip-audit@1220774d901786e6f652ae159f7b6bc8fea6d266 # v1.1.0
+        with:
+          inputs: '.'

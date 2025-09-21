@@ -2,8 +2,11 @@ name: "High Security CodeQL Analysis"
 
 on:
   push:
-  pull_request:
   workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch name or commit SHA to scan'
+        required: true
 
 jobs:
   codeql-actions:
@@ -18,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5.0.0
         with:
-          ref: "production"
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref || github.ref }}
 
       - name: Initialize CodeQL (Actions)
         uses: github/codeql-action/init@v3.30.3

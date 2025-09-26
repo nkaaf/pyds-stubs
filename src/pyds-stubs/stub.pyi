@@ -22,7 +22,6 @@ import numpy
 from gi.repository import GLib, Gst
 from numpy.typing import NDArray
 from pyds.typing import GList, capsule
-from typing_extensions import TypeAlias
 
 __all__: list[str] = [
     'BOTH_HEAD',
@@ -2195,7 +2194,7 @@ class NvDsMeta:
     def cast(self: int) -> NvDsMeta:
         """Cast given object/data to :class:`NvDsMeta`, call pyds.NvDsMeta.cast(data)"""
 
-NvDsMetaList: TypeAlias = GList[NvDsMeta] | None
+NvDsMetaList: typing.TypeAlias = GList[NvDsMeta] | None
 
 class NvDsMetaPool:
     """Holds information about given metadata pool.
@@ -4270,7 +4269,7 @@ def nvds_batch_meta_release_func(
     :arg user_data: An object of user specific data
     """
 
-NvDsUserMetaList: TypeAlias = GList[NvDsUserMeta] | None
+NvDsUserMetaList: typing.TypeAlias = GList[NvDsUserMeta] | None
 
 def nvds_clear_batch_user_meta_list(
     batch_meta: NvDsBatchMeta, meta_list: NvDsUserMetaList
@@ -4281,7 +4280,7 @@ def nvds_clear_batch_user_meta_list(
     :arg meta_list: An object of type :class:`NvDsUserMetaList` which needs to be cleared
     """
 
-NvDisplayMetaList: TypeAlias = GList[NvDsDisplayMeta] | None
+NvDisplayMetaList: typing.TypeAlias = GList[NvDsDisplayMeta] | None
 
 def nvds_clear_display_meta_list(
     frame_meta: NvDsFrameMeta, meta_list: NvDisplayMetaList
@@ -4292,7 +4291,7 @@ def nvds_clear_display_meta_list(
     :arg meta_list: An object of type :class:`NvDisplayMetaList` which needs to be cleared
     """
 
-NvDsFrameMetaList: TypeAlias = GList[NvDsFrameMeta] | None
+NvDsFrameMetaList: typing.TypeAlias = GList[NvDsFrameMeta] | None
 
 def nvds_clear_frame_meta_list(
     batch_meta: NvDsBatchMeta, meta_list: NvDsFrameMetaList
@@ -4324,7 +4323,7 @@ def nvds_clear_meta_list(
     :returns: An object of updated meta list
     """
 
-NvDsObjectMetaList: TypeAlias = GList[NvDsObjectMeta] | None
+NvDsObjectMetaList: typing.TypeAlias = GList[NvDsObjectMeta] | None
 
 def nvds_clear_obj_meta_list(
     frame_meta: NvDsFrameMeta, meta_list: NvDsObjectMetaList

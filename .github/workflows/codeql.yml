@@ -24,13 +24,13 @@ jobs:
           ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref || github.ref }}
 
       - name: Initialize CodeQL (Actions)
-        uses: github/codeql-action/init@v3.30.3
+        uses: github/codeql-action/init@v3.30.4
         with:
           languages: actions
           queries: security-and-quality,security-extended
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v3.30.3
+        uses: github/codeql-action/autobuild@v3.30.4
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3.30.3
+        uses: github/codeql-action/analyze@v3.30.4

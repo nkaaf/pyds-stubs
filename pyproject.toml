@@ -49,7 +49,7 @@ gen = [
     "pybind11-stubgen==2.5.5"
 ]
 lint = [
-    "ruff==0.13.1"
+    "ruff==0.13.2"
 ]
 
 [build-system]

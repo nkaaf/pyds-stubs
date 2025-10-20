@@ -24,16 +24,16 @@ jobs:
           ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref || github.ref }}
 
       - name: Initialize CodeQL (Python)
-        uses: github/codeql-action/init@v4.30.8
+        uses: github/codeql-action/init@v4.30.9
         with:
           languages: python
           queries: security-and-quality,security-extended
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v4.30.8
+        uses: github/codeql-action/autobuild@v4.30.9
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v4.30.8
+        uses: github/codeql-action/analyze@v4.30.9
 
   codeql-actions:
     name: "CodeQL GitHub Actions Scan"
@@ -50,13 +50,13 @@ jobs:
           ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref || github.ref }}
 
       - name: Initialize CodeQL (Actions)
-        uses: github/codeql-action/init@v4.30.8
+        uses: github/codeql-action/init@v4.30.9
         with:
           languages: actions
           queries: security-and-quality,security-extended
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v4.30.8
+        uses: github/codeql-action/autobuild@v4.30.9
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v4.30.8
+        uses: github/codeql-action/analyze@v4.30.9

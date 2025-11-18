@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout selected branch
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v5.0.1
         with:
           ref: "1.1.0-stubs"
 

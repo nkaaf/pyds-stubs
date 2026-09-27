@@ -1,9 +1,4 @@
-# Development
-.idea
-
-# Build
-dist
-
-# Python
-__pycache__
-.venv
+# Jetbrains
+.idea/*
+!.idea/jsonSchemas.xml
+!.idea/pyLspTools.xml

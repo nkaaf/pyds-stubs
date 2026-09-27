@@ -1,8 +1,10 @@
 name: "Audit"
 
 on:
-  pull_request: {}
-  workflow_dispatch: {}
+  push:
+    branches: [ main ]
+  pull_request: { }
+  workflow_dispatch: { }
 
 jobs:
   audit:
@@ -38,7 +40,7 @@ jobs:
 
       - name: Audit
         run: |
-          uv audit --output-format sarif > uv-audit.sarif
+          uv audit --frozen --output-format sarif > uv-audit.sarif
 
       - name: Upload SARIF
         if: always()

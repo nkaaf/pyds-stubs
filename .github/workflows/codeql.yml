@@ -17,6 +17,7 @@ jobs:
         id: set-matrix
         uses: advanced-security/set-codeql-language-matrix@v1.6.0
         with:
+          access-token: ${{ github.token }}
           endpoint: ${{ github.event.repository.languages_url }}
 
   analyze:

@@ -1,0 +1,40 @@
+[project]
+name = "pyds-stubs"
+version = "1.0"
+description = "Typing stubs for NVIDIA DeepStream Python Bindings"
+requires-python = ">=3.6,<3.7"
+authors = [
+    { name = "Niklas Kaaf", email = "nkaaf@protonmail.com" }
+]
+maintainers = [
+    { name = "Niklas Kaaf", email = "nkaaf@protonmail.com" }
+]
+readme = "README.md"
+keywords = ['nvidia', 'deepstream', 'bindings', 'stubs']
+classifiers = [
+    'Development Status :: 5 - Production/Stable',
+    'Intended Audience :: Developers',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3 :: Only',
+    'Programming Language :: Python :: 3.6',
+    'Topic :: Documentation',
+    'Typing :: Stubs Only',
+]
+license-files = [
+    "LICENSE"
+]
+dependencies = [
+    "numpy",
+    "PyGObject-stubs"
+]
+
+[build-system]
+requires = ["uv_build==0.12.15"]
+build-backend = "uv_build"
+
+[tool.uv]
+required-version = "0.12.15"
+
+[tool.uv.audit]
+malware-check = true

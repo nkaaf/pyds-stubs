@@ -1,0 +1,44 @@
+version = 1
+revision = 3
+requires-python = "==3.6.*"
+
+[[package]]
+name = "numpy"
+version = "1.19.5"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/51/60/3f0fe5b7675a461d96b9d6729beecd3532565743278a9c3fe6dd09697fa7/numpy-1.19.5.zip", hash = "sha256:a76f502430dd98d7546e1ea2250a7360c065a5fdea52b2dffe8ae7180909b6f4", size = 7318340, upload-time = "2021-01-05T17:45:27.995Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6a/9d/984f87a8d5b28b1d4afc042d8f436a76d6210fb582214f35a0ea1db3be66/numpy-1.19.5-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:cc6bd4fd593cb261332568485e20a0712883cf631f6f5e8e86a52caa8b2b50ff", size = 15599590, upload-time = "2021-01-05T17:19:38.152Z" },
+    { url = "https://files.pythonhosted.org/packages/9e/3f/693399e09bfc75737e0622803ba13d73e9a4da1d9fcc8614723372c5b00d/numpy-1.19.5-cp36-cp36m-manylinux1_i686.whl", hash = "sha256:aeb9ed923be74e659984e321f609b9ba54a48354bfd168d21a2b072ed1e833ea", size = 11484645, upload-time = "2021-01-05T17:20:18.944Z" },
+    { url = "https://files.pythonhosted.org/packages/45/b2/6c7545bb7a38754d63048c7696804a0d947328125d81bf12beaa692c3ae3/numpy-1.19.5-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:8b5e972b43c8fc27d56550b4120fe6257fdc15f9301914380b27f74856299fea", size = 13391355, upload-time = "2021-01-05T17:21:06.525Z" },
+    { url = "https://files.pythonhosted.org/packages/ab/81/244258ba61e03ccbfff2b9d3918b3665184380c5591050eb84ac3e88d0b0/numpy-1.19.5-cp36-cp36m-manylinux2010_i686.whl", hash = "sha256:43d4c81d5ffdff6bae58d66a3cd7f54a7acd9a0e7b18d97abb255defc09e3140", size = 12564437, upload-time = "2021-01-05T17:21:50.833Z" },
+    { url = "https://files.pythonhosted.org/packages/14/32/d3fa649ad7ec0b82737b92fefd3c4dd376b0bb23730715124569f38f3a08/numpy-1.19.5-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:a4646724fba402aa7504cd48b4b50e783296b5e10a524c7a6da62e4a8ac9698d", size = 14835495, upload-time = "2021-01-05T17:22:44.072Z" },
+    { url = "https://files.pythonhosted.org/packages/ab/f6/6cb12866511a564dde8208111b551f9469ba1c3963a63077afbb8a070a4a/numpy-1.19.5-cp36-cp36m-manylinux2014_aarch64.whl", hash = "sha256:2e55195bc1c6b705bfd8ad6f288b38b11b1af32f3c8289d6c50d47f950c12e76", size = 12376775, upload-time = "2021-01-05T17:23:27.729Z" },
+    { url = "https://files.pythonhosted.org/packages/b2/4f/5b2cdd441e92555377003b06c0c2c4ba0282a2bfe809f89a009e853fb26b/numpy-1.19.5-cp36-cp36m-win32.whl", hash = "sha256:39b70c19ec771805081578cc936bbe95336798b7edf4732ed102e7a43ec5c07a", size = 11008246, upload-time = "2021-01-05T17:24:06.753Z" },
+    { url = "https://files.pythonhosted.org/packages/ea/bc/da526221bc111857c7ef39c3af670bbcf5e69c247b0d22e51986f6d0c5c2/numpy-1.19.5-cp36-cp36m-win_amd64.whl", hash = "sha256:dbd18bcf4889b720ba13a27ec2f2aac1981bd41203b3a3b27ba7a33f88ae4827", size = 13227547, upload-time = "2021-01-05T17:24:53.052Z" },
+    { url = "https://files.pythonhosted.org/packages/3c/1b/c8bb1bfe13a697f76a2c970df8fc7f287352ebafa9708a5b3f52692efd43/numpy-1.19.5-pp36-pypy36_pp73-manylinux2010_x86_64.whl", hash = "sha256:a0d53e51a6cb6f0d9082decb7a4cb6dfb33055308c4c44f53103c073f649af73", size = 14259809, upload-time = "2021-01-05T17:44:17.978Z" },
+]
+
+[[package]]
+name = "pyds-stubs"
+version = "1.0.3"
+source = { editable = "." }
+dependencies = [
+    { name = "numpy" },
+    { name = "pygobject-stubs" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "numpy" },
+    { name = "pygobject-stubs" },
+]
+
+[[package]]
+name = "pygobject-stubs"
+version = "2.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/83/c8/72a4dd7c5f1621d8d7ecf66ba7a997d7b5653ec9f6d59d3f825a2bca8b45/PyGObject-stubs-2.0.0.tar.gz", hash = "sha256:c0c6c492ac4302868339da3cc27c5e288c5adc3db079dd36312dd507ecf23067", size = 152596, upload-time = "2022-12-18T16:57:11.274Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4a/0e/f6f6fc553a347ddf76b7440b3233b10b43e84bc7426ae6e7287f89448909/PyGObject_stubs-2.0.0-py3-none-any.whl", hash = "sha256:73a4c1e78e19f9211e6b25af1da05de0ae80031823b38aa0407fcd76d0e3e56f", size = 160668, upload-time = "2022-12-18T16:57:09.79Z" },
+]
